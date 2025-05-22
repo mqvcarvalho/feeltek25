@@ -57,20 +57,25 @@ except FileNotFoundError:
     st.error("❌ O ficheiro messages.csv não foi encontrado. Garante que está na raíz do repositório.")
     st.stop()
 
-# Preparar vetorizador
-vectorizer = CountVectorizer()
-X = vectorizer.fit_transform(df["message"])
-y = df["label"]
+@st.cache_resource
+def train_models(data):
+    vectorizer = CountVectorizer()
+    X = vectorizer.fit_transform(data["message"])
+    y = data["label"]
 
-# Treinar os três modelos
-models = {
-    "Naive Bayes": MultinomialNB(),
-    "SVM": LinearSVC(),
-    "Logistic Regression": LogisticRegression(max_iter=1000)
-}
+    models = {
+        "Naive Bayes": MultinomialNB(),
+        "SVM": LinearSVC(),
+        "Logistic Regression": LogisticRegression(max_iter=1000)
+    }
 
-for model in models.values():
-    model.fit(X, y)
+    for model in models.values():
+        model.fit(X, y)
+
+    return vectorizer, models
+
+vectorizer, models = train_models(df)
+
 
 tab1, tab2 = st.tabs(["🎯 Jogo: Tu vs Máquina", "📝 Testar Mensagem"])
 
