@@ -6,9 +6,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import train_test_split
-import streamlit as st
-import pandas as pd
-import random
+
 import time  # Add this
 
 st.write("✅ App started...")
