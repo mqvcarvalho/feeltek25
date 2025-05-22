@@ -51,7 +51,7 @@ def explicacao_heuristica(msg, label):
         return "ℹ️ Classificação baseada apenas em padrões aprendidos pelo modelo."
 
 
-df = pd.read_csv("data/messages.csv")
+df = pd.read_csv("messages.csv")
 
 # Preparar vetorizador
 vectorizer = CountVectorizer()
