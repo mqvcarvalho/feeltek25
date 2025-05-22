@@ -58,6 +58,7 @@ def explicacao_heuristica(msg, label):
 
 try:
     df = pd.read_csv("messages.csv")
+    st.write("✅ Loaded CSV successfully.")
 except FileNotFoundError:
     st.error("❌ O ficheiro messages.csv não foi encontrado. Garante que está na raíz do repositório.")
     st.stop()
