@@ -51,7 +51,11 @@ def explicacao_heuristica(msg, label):
         return "ℹ️ Classificação baseada apenas em padrões aprendidos pelo modelo."
 
 
-df = pd.read_csv("messages.csv")
+try:
+    df = pd.read_csv("messages.csv")
+except FileNotFoundError:
+    st.error("❌ O ficheiro messages.csv não foi encontrado. Garante que está na raíz do repositório.")
+    st.stop()
 
 # Preparar vetorizador
 vectorizer = CountVectorizer()
