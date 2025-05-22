@@ -7,8 +7,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import train_test_split
 
-import time  # Add this
-
 print("it started")
 
 def explicacao_heuristica(msg, label):
